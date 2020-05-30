@@ -18,3 +18,4 @@ const submit = () => {
 }
 
 document.getElementById("submit").addEventListener("click", submit);
+document.getElementById("q").addEventListener("keydown", e => (e.key === 'Enter') && submit());

@@ -1,11 +1,17 @@
 const getRoot = () => document.getElementById("root");
 const init = () => getRoot().innerHTML = '';
+const createDiv = text => {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div;
+}
 const appendContent = content => {
     let li = document.createElement('li');
-    li.appendChild(document.createTextNode(content));
+    li.appendChild(createDiv(d.name));
+    li.appendChild(createDiv(d.detail));
     getRoot().appendChild(li);
 }
-const show = json => json.forEach(d => appendContent(d.fields.content_name[0]));
+const show = json => json.forEach(d => appendContent(d.field));
 const BASE_URL = 'https://198182tj3g.execute-api.ap-northeast-1.amazonaws.com/edbaseapi/v1/search';
 const search = q => fetch(`${BASE_URL}?q=${q}`, {mode: 'cors'})
     .then(res => res.json())

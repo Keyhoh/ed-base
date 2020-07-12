@@ -1,14 +1,14 @@
 const getRoot = () => document.getElementById("root");
 const init = () => getRoot().innerHTML = '';
-const createDiv = text => {
+const createContent = d => {
     let div = document.createElement('div');
-    div.appendChild(document.createTextNode(text));
+    const htmlString = `<p><strong>${d.name}</strong></p><p>${d.detail}</p>`;
+    div.innerHTML = htmlString
     return div;
 }
-const appendContent = content => {
+const appendContent = d => {
     let li = document.createElement('li');
-    li.appendChild(createDiv(d.name));
-    li.appendChild(createDiv(d.detail));
+    li.appendChild(createContent(d));
     getRoot().appendChild(li);
 }
 const show = json => json.forEach(d => appendContent(d.field));
